@@ -1,13 +1,7 @@
-/*
- * @Author: your name
- * @Date: 2022-04-21 11:09:45
- * @LastEditTime: 2022-04-21 15:16:45
- * @LastEditors: Please set LastEditors
- * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- * @FilePath: \vite-project\vite.config.ts
- */
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
+
+import path from "path";
 
 // 添加插件  在 plugins 数组中引入
 // import legacy from '@vitejs/plugin-legacy'
@@ -37,4 +31,27 @@ export default defineConfig({
     //   // apply: 'build'
     // }
   ],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "src"),
+    },
+  },
+  // 全局 css 样式文件全局注入到项目
+  css: {
+    //css预处理
+    preprocessorOptions: {
+      /*
+				引入var.scss全局预定义变量，
+				如果引入多个文件，
+				可以使用
+				'@import "@/assets/scss/globalVariable1.scss";@import "@/assets/scss/globalVariable2.scss";'
+				这种格式
+        注: 只有在main.js引入一个其他scss文件或者在.vue文件中使用<style lang="scss"><style>，并且里面有内容，
+            则 scss.additionalData 配置的全局scss文件就可以正确引入了
+			*/
+      scss: {
+        additionalData: "@import '@/assets/style/main.scss';",
+      },
+    },
+  },
 });
