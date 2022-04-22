@@ -118,8 +118,8 @@ module.exports = {
     "no-mixed-spaces-and-tabs": "warn",
     // 禁止出现多行空行
     "no-multiple-empty-lines": "warn",
-    // 禁止出现;
-    semi: ["warn", "never"],
+    // 禁止出现;  "always" (默认) 要求在语句末尾使用分号;  "never" 禁止在语句末尾使用分号 (除了消除以 [、(、/、+ 或 - 开始的语句的歧义)
+    semi: ["warn", "always"],
     // 强制在块之前使用一致的空格
     "space-before-blocks": "warn",
     // 强制在 function的左括号之前使用一致的空格
