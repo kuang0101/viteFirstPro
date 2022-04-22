@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
+import viteCompression from "vite-plugin-compression";
 
 import path from "path";
 
@@ -8,9 +9,18 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "./", // 打包路径
   // plugins 接受包含多个插件作为单个元素的预设，该数组在内部被扁平化
   plugins: [
     vue(),
+    // gzip压缩 生产环境生成 .gz 文件
+    viteCompression({
+      verbose: true,
+      disable: false,
+      threshold: 10240,
+      algorithm: "gzip",
+      ext: ".gz",
+    }),
     // legacy({
     //   targets: ['defaults', 'not IE 11']
     // }),
@@ -31,6 +41,7 @@ export default defineConfig({
     //   // apply: 'build'
     // }
   ],
+  // 配置别名
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
@@ -51,6 +62,23 @@ export default defineConfig({
 			*/
       scss: {
         additionalData: "@import '@/assets/style/main.scss';",
+      },
+    },
+  },
+  // 启动服务配置
+  server: {
+    host: "0.0.0.0",
+    port: 3000,
+    open: true,
+    https: false,
+    proxy: {},
+  },
+  // 生产环境打包配置； 去除 console、 debugger
+  build: {
+    terserOptions: {
+      compress: {
+        // drop_console: true,
+        // drop_debugger: true,
       },
     },
   },
