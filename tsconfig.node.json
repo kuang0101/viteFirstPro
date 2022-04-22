@@ -2,7 +2,9 @@
   "compilerOptions": {
     "composite": true,
     "module": "esnext",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    // 模块 “path“只能在使用 “allowSyntheticDefaultImports“ 标志时进行默认导入，使用 “export =“ 声明的，只能使用 “allowSyntheticDefau“
+    "allowSyntheticDefaultImports": true
   },
   "include": ["vite.config.ts"]
 }

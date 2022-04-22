@@ -37,7 +37,15 @@ module.exports = {
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "no-var": "error",
-    "prettier/prettier": "error",
+    // "prettier/prettier": "warn",
+    // "prettier/prettier": [
+    //   "warn",
+    //   {
+    //     singleQuote: true
+    //   }
+    // ],
+    // 关闭文件命名规则
+    "vue/multi-word-component-names": 0,
     // 禁止出现console
     "no-console": "warn",
     // 禁用debugger
@@ -96,6 +104,8 @@ module.exports = {
     indent: "off",
     // 强制在 JSX 属性中一致地使用双引号或单引号
     // 'jsx-quotes': 'warn',
+    quotes: ["error", "double"],
+    "jsx-quotes": ["error", "prefer-double"],
     // 强制可嵌套的块的最大深度4
     "max-depth": "warn",
     // 强制最大行数 300
