@@ -47,7 +47,7 @@ module.exports = {
     // 关闭文件命名规则
     "vue/multi-word-component-names": 0,
     // 禁止出现console
-    "no-console": "warn",
+    // "no-console": "warn",
     // 禁用debugger
     "no-debugger": "warn",
     // 禁止出现重复的 case 标签
